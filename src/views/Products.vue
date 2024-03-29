@@ -26,19 +26,21 @@
       </div>
       <div class="form-group">
         <input type="text" placeholder="Product Price" v-model="product.price" class="form-control">
-      </div>
-
+      </div>    
       <!-- Button and Success Message -->
-      <div class="row">
-        <div class="col-md-6">
-          <button @click="addItem" class="btn btn-primary float-right ">Add Product</button>
-        </div>
-        <div class="col-md-6 text-right">
-          <div v-if="isSuccess" class="text-success">Product added successfully!</div>
-        </div>
-      </div>
+      
+                <div class="row">
+              <div class="col-md-6">
+                <h3 class="d-inline-block" >Products list</h3>
+              </div>
+              <div class="col-md-6 ">
+                <button id="addBtn" @click="addItem" class="btn btn-primary">Add Product</button>
+              </div>
+              <div v-if="isSuccess" class="text-success">Product added successfully!</div>
+            </div>
 
-      <h3 class="d-inline-block">Products list</h3>
+         
+          
       <!-- Product Table -->
       <div class="table-responsive">
         <table class="table">
@@ -144,24 +146,31 @@ export default {
   }
 },
 
-    addItem() {
-      addDoc(collection(db, "products"), this.product)
-        .then((docRef) => {
-          console.log("Document written with ID: ", docRef.id);
-          this.readData();
-          this.isSuccess = true; // Set success state to true
-          // Reset the product object after successful addition
-          this.product = { name: null, price: null };
-          // Hide success message after a few seconds
-          setTimeout(() => {
-            this.isSuccess = false;
-          }, 3000);
-        })
-        .catch((error) => {
-          console.error("Error adding product: ", error);
+addItem() {
+  // Check if the name and price fields are empty
+  if (!this.product.name || !this.product.price) {
+    alert("Please fill out all fields."); // Log error message
+    return; // Exit the function early
+  }
 
-        });
-    },
+  // If fields are not empty, proceed with adding the product
+  addDoc(collection(db, "products"), this.product)
+    .then((docRef) => {
+      console.log("Document written with ID: ", docRef.id);
+      this.readData();
+      this.isSuccess = true; // Set success state to true
+      // Reset the product object after successful addition
+      this.product = { name: null, price: null };
+      // Hide success message after a few seconds
+      setTimeout(() => {
+        this.isSuccess = false;
+      }, 3000);
+    })
+    .catch((error) => {
+      console.error("Error adding product: ", error);
+    });
+},
+
     editProduct(product) {
       // Set the product data in the modal
       this.product.name = product.name;
@@ -218,6 +227,11 @@ export default {
 
   
 <style scoped lang="scss">
+.container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .form-group{
   padding-bottom: 1rem;
 }
@@ -226,5 +240,8 @@ export default {
 // }
 .btn-danger, .btn-warning{
   margin-right: 1rem;
+}
+.addBtn{
+  float: right !important;
 }
 </style>
