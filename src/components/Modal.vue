@@ -115,7 +115,8 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import firebaseApp from '../firebase.js';
+import { auth } from '@/firebase.js'
+// import firebaseApp from '../firebase.js';
 const email = ref('');
 const password = ref('');
 
@@ -159,7 +160,7 @@ export default {
       this.successModalInstance.hide();
     },
     register() {
-      const auth = getAuth(firebaseApp);
+      // const auth = getAuth(firebaseApp);
       createUserWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
           const user = userCredential.user;

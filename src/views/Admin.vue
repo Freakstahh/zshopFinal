@@ -8,7 +8,8 @@
             <div class="sidebar-content">
                 <!-- sidebar-brand  -->
                 <div class="sidebar-item sidebar-brand">
-                    <a href="#">Zshop</a>
+                    <img class="img-responsive img-rounded" width="50px" height="50px" src="../assets/zshop_transparent_white.svg" mr="10px" alt="User picture">
+                    <a href="#" ml="10px">Zshop</a>
                     <div id="close-sidebar" @click="closeMenu">
                         <i class="fas fa-times"></i>
                     </div>
@@ -16,11 +17,11 @@
                 <!-- sidebar-header  -->
                 <div class="sidebar-item sidebar-header">
                     <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="../assets/user.png" alt="User picture">
+                        <img class="img-responsive img-rounded" src="../assets/unknown.png" alt="User picture">
                     </div>
                     <div class="user-info">
-                        <span class="user-name">Jhon
-                            <strong>Smith</strong>
+                        <span class="user-name">
+                            <strong>Admin</strong>
                         </span>
                         <span class="user-role"> {{email}} </span>
                         <span class="user-status">
@@ -29,19 +30,7 @@
                         </span>
                     </div>
                 </div>
-                <!-- sidebar-search  -->
-                <div class="sidebar-item sidebar-search">
-                    <div>
-                        <div class="input-group">
-                            <input type="text" class="form-control search-menu" placeholder="Search...">
-                            <div class="input-group-append">
-                                <span class="input-group-text">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <!-- sidebar-menu  -->
                 <div class=" sidebar-item sidebar-menu">
                     <ul>
@@ -96,7 +85,7 @@
   
   <script>
 
-  
+  import {auth} from  '../firebase'
   // @ is an alias to /src
   
   
@@ -109,6 +98,15 @@
       closeMenu(){
         $(".page-wrapper").toggleClass("toggled");
       },
+      logout(){
+          auth.signOut()
+          .then(() => {
+              this.$router.replace('/');
+          })
+          .catch((err) =>{
+              console.log(err);
+          });
+      }
   }
 }
   </script>

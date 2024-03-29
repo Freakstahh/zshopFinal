@@ -6,6 +6,9 @@ import Overview from "../views/Overview.vue";
 import Products from "../views/Products.vue";
 import Profile from "../views/Profile.vue";
 import UserProducts from "../views/UserProducts.vue";
+import {firebaseApp} from '../firebase.js';
+import { auth } from '../firebase.js';
+
 
 const routes = [
   {
@@ -22,6 +25,7 @@ const routes = [
     path: "/admin",
     name: "admin",
     component: Admin,
+    meta: { requiresAuth: true },
     children: [
       {
         path: "overview",
@@ -60,5 +64,18 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
+  const currentUser = auth.currentUser
+
+  if (requiresAuth && !currentUser) {
+    next('/')
+  } else {
+    next()
+  }
+})
+
+
 
 export default router;

@@ -1,6 +1,6 @@
 <template>
     <div class="userProducts">
-        <!-- <Navbar/> -->
+        <Navbar/>
         <h1>User Products Page</h1>
       
       

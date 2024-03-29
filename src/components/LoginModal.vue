@@ -74,7 +74,8 @@
 <script>
 import Modal from 'bootstrap/js/dist/modal';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import firebaseApp from '../firebase.js';
+import { auth } from '@/firebase.js'
+// import firebaseApp from '@/firebase.js';
 import { useRouter } from 'vue-router';
 
 export default {
@@ -100,16 +101,14 @@ export default {
       this.modalInstance.hide();
     },
     login() {
-      const auth = getAuth(firebaseApp);
+      // const auth = getAuth(firebaseApp);
       signInWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user);
           this.closeModal();
-          // Use the router instance if needed
-          // const router = useRouter();
-          // router.replace('about');
-          this.$router.replace('about');
+
+          this.$router.replace('home');
         })
         .catch((error) => {
           const errorCode = error.code;
