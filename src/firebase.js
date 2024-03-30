@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 
 
@@ -21,11 +22,14 @@ const app= initializeApp(firebaseConfig);
 // Optional: Initialize other Firebase services
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage();
 
-const colRef = collection(db, 'products');
-const docsSnap =  getDocs(colRef);
-
-
+// Fetch documents from Firestore
+async function fetchDocs() {
+  const colRef = collection(db, 'products');
+  const docsSnap = await getDocs(colRef);
+  return docsSnap;
+}
 
 // Export the necessary instances or services
-export { app, auth, db, docsSnap, colRef };
+export { app, auth, db, storage, fetchDocs };

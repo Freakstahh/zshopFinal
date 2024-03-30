@@ -11,8 +11,8 @@
     "bootstrap": "^5.3.3",
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.8.3",
-    "firebase": "^10.9.0",
     "vue": "^3.2.13",
+    "vue-firestore": "^0.3.30",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
@@ -27,8 +27,10 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
     "file-loader": "^6.2.0",
+    "firebase": "^10.10.0",
     "prettier": "^2.4.1",
     "sass": "^1.32.7",
-    "sass-loader": "^12.0.0"
+    "sass-loader": "^12.0.0",
+    "sweetalert2": "^11.10.7"
   }
 }
