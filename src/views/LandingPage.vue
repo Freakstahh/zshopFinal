@@ -2,14 +2,14 @@
   <div class="landingPage">
    <Navbar></Navbar>
    <Hero></Hero>
-   <Products></Products> 
+   <ProductList></ProductList> 
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue';
 import Hero from '@/components/Hero.vue';
-import Products from '@/sections/Products.vue';
+import ProductList from '@/sections/ProductList.vue';
 
 // @ is an alias to /src
 
@@ -17,7 +17,7 @@ export default {
   name: "LandingPage",
   components: {
     Navbar,
-    Products,
+    ProductList,
     Hero
   },
 };

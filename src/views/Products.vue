@@ -305,7 +305,7 @@ addItem() {
       this.product.name = product.name;
       this.product.price = product.price;
       this.product.description = product.description;
-      this.product.images = [product.images];
+      this.product.images = product.images;
       this.editingDocId = product.id;
 
       // Show the modal

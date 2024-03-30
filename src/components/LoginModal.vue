@@ -107,8 +107,11 @@ export default {
           const user = userCredential.user;
           console.log(user);
           this.closeModal();
-
           this.$router.replace('home');
+          Toast.fire({
+            icon: "success",
+            title: "Login succesful!"
+          });
         })
         .catch((error) => {
           const errorCode = error.code;

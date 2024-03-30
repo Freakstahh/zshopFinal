@@ -4,7 +4,7 @@
       <div class="row h-100 justify-content-center align-items-center">
         <div class="col-md-5">
           <div class="hero-content">
-            <h1 class="hero-title">Your go to Tech Shop!</h1>
+            <h1 class="hero-title">Your One Stop Tech Shop!</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
               numquam tempora, iure delectus totam minus quam aperiam ratione
@@ -12,10 +12,13 @@
               voluptas ab praesentium nihil?
             </p>
             <div class="hero-btn mt-5">
-              <button class="btn custom-btn btn-info me-3">Explore</button>
-              <button class="btn custom-btn btn-outline-secondary">
+              <button @click="explore" id="scrollBtn" class="btn custom-btn btn-info me-3">Explore</button>
+              <router-link to="/userProducts">
+                <button class="btn custom-btn btn-outline-secondary">
                 Products
               </button>
+              </router-link>
+              
             </div>
           </div>
         </div>
@@ -35,6 +38,13 @@ export default {
   props: {
     msg: String,
   },
+  methods:{
+    explore(){
+      document.getElementById('scrollBtn').addEventListener('click', function() {
+  window.scrollBy(0, 600);
+});
+    }
+  }
 };
 </script>
 

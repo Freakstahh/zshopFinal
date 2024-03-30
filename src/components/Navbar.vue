@@ -29,9 +29,6 @@
             <li v-if="isAuthenticated" class="nav-item">
               <router-link class="nav-link" to="/userProducts">Products</router-link>
             </li>
-            <li v-if="isAuthenticated" class="nav-item">
-              <router-link class="nav-link" to="/about">About</router-link>
-            </li>
             
           </ul>
           
@@ -107,6 +104,10 @@ export default {
       auth.signOut()
         .then(() => {
           this.$router.replace('/');
+          Toast.fire({
+            icon: "success",
+            title: "Logged out!"
+          });
         })
         .catch((err) => {
           console.log(err);
