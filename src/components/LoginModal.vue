@@ -78,6 +78,8 @@ import { auth } from '@/firebase.js'
 // import firebaseApp from '@/firebase.js';
 import { useRouter } from 'vue-router';
 
+const ADMIN_EMAIL = 'admin@email.com';
+
 export default {
   name: 'LoginModal',
   data() {
@@ -101,24 +103,32 @@ export default {
       this.modalInstance.hide();
     },
     login() {
-      // const auth = getAuth(firebaseApp);
-      signInWithEmailAndPassword(auth, this.email, this.password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(user);
-          this.closeModal();
+    signInWithEmailAndPassword(auth, this.email, this.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        this.closeModal();
+
+        // Check if the logged-in user is the admin
+        if (user.email === ADMIN_EMAIL) {
+          // Redirect to the admin page
+          this.$router.replace('admin/products');
+        } else {
+          // Redirect to the regular user page
           this.$router.replace('home');
-          Toast.fire({
-            icon: "success",
-            title: "Login succesful!"
-          });
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error('Authentication error:', errorMessage);
+        }
+
+        Toast.fire({
+          icon: "success",
+          title: "Login successful!"
         });
-    },
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error('Authentication error:', errorMessage);
+      });
+  }
   },
 };
 </script>
