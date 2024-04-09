@@ -26,9 +26,6 @@
             <li v-if="isAuthenticated" class="nav-item">
               <router-link class="nav-link active" to="/home">Home</router-link>
             </li>
-            <li v-if="isAuthenticated" class="nav-item">
-              <router-link class="nav-link" to="/userProducts">Products</router-link>
-            </li>
             
           </ul>
           

@@ -6,18 +6,10 @@
           <div class="hero-content">
             <h1 class="hero-title">Your One Stop Tech Shop!</h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-              numquam tempora, iure delectus totam minus quam aperiam ratione
-              dolores magni voluptates ut necessitatibus odio ipsum fuga,
-              voluptas ab praesentium nihil?
+              Welcome to ZShop! We got the best deals for all kinds of laptops in the market. Gaming, productivity, business, brand new and refurbished we got it all for you. What are you waiting for? Shop now!
             </p>
             <div class="hero-btn mt-5">
               <button @click="explore" id="scrollBtn" class="btn custom-btn btn-info me-3">Explore</button>
-              <router-link to="/userProducts">
-                <button class="btn custom-btn btn-outline-secondary">
-                Products
-              </button>
-              </router-link>
               
             </div>
           </div>

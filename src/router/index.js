@@ -2,10 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import LandingPage from "../views/LandingPage.vue";
 import Admin from "../views/Admin.vue";
-import Overview from "../views/Overview.vue";
 import Products from "../views/Products.vue";
-import Profile from "../views/Profile.vue";
-import UserProducts from "../views/UserProducts.vue";
 import {firebaseApp} from '../firebase.js';
 import { auth } from '../firebase.js';
 
@@ -28,28 +25,13 @@ const routes = [
     meta: { requiresAuth: true },
     children: [
       {
-        path: "overview",
-        name: "overview",
-        component: Overview
-      },
-      {
         path: "products",
         name: "products",
         component: Products
       },
-      {
-        path: "profile",
-        name: "profile",
-        component: Profile
-      }   
     ],
   },
-  
-  {
-    path: "/userProducts",
-    name: "userProducts",
-    component: UserProducts,
-  },
+
 ];
 
 const router = createRouter({

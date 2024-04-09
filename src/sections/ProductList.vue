@@ -21,7 +21,7 @@
                       <h5 class="card-title">{{ product.name }}</h5>
                       <h7 class="card-title"><strong>{{ "₱ " +product.price }}</strong></h7>
                       <p class="card-text">{{ product.description }}</p>
-                      <a href="#" class="btn btn-primary">Add to Cart</a>
+                      
                     </div>
                   </div>
                 </div>
@@ -146,4 +146,7 @@ export default {
 .carousel-control-next {
   right: -60px;
 }
+
   </style>
+
+  

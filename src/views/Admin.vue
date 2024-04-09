@@ -1,9 +1,11 @@
 <template>
     <div class="Admin">
+        
         <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
             <a id="show-sidebar" @click="closeMenu" class="btn btn-sm btn-dark" href="#">
                 <i class="fas fa-bars"></i>
             </a>
+            
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
                 <!-- sidebar-brand  -->
@@ -39,12 +41,6 @@
                         </li>
 
                         <li>
-                            <router-link to="/admin/overview">
-                                <i class="fa fa-chart-line"></i>
-                                <span>Overview</span>
-                            </router-link>
-                        </li>
-                        <li>
                             <router-link to="/admin/products">
                                 <i class="fab fa-amazon"></i>
                                 <span>Products</span>
@@ -67,6 +63,7 @@
         <main class="page-content">
             <router-view/>
         </main>
+        
         <!-- page-content" -->
     </div>
     <!-- page-wrapper -->
